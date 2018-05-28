@@ -2,9 +2,6 @@
   (:require-macros [cljs.core.async.macros :refer [go]])
   (:require [cljs.core.async :refer [put! chan <!]]))
 
-(defn pprint [o]
-  (println (JSON/stringify o nil 2)))
-
 (defn log [v & text]
   (let [vs (if (string? v)
              (apply str v text)
@@ -75,7 +72,7 @@
        (.lowerBound js/IDBKeyRange bound open?)
        (.upperBound js/IDBKeyRange bound open?)))
   ([lower upper open-lower? open-upper?]
-     (.bound js/IDBKeyRange lower uppoer open-lower? open-upper?)))
+     (.bound js/IDBKeyRange lower upper open-lower? open-upper?)))
 
 (defn open-cursor [store-or-index range]
   (.openCursor store-or-index range))
