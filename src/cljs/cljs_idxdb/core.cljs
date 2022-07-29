@@ -17,7 +17,7 @@
   (log e))
 
 (defn delete-store [db name]
-  (when (.. (.-objectStoreNames db) (contains name))
+  (when (.. (.-objectStoreNames db) (contains? name))
     (.. db (deleteObjectStore name))))
 
 (defn create-store [db name opts]
